@@ -6,10 +6,11 @@
     <title>FREETIMEGAMING - Best Free Fire Sensi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #0d0d0d; color: white; font-family: sans-serif; }
+        body { background-color: #0d0d0d; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         .red-glow { box-shadow: 0 0 15px rgba(220, 38, 38, 0.2); border: 1px solid rgba(220, 38, 38, 0.3); }
         .card-bg { background-color: #1a1a1a; }
         .text-glow { text-shadow: 0 0 10px rgba(220, 38, 38, 0.5); }
+        select { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e"); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1.5em 1.5em; padding-right: 2.5rem; }
     </style>
 </head>
 <body class="pb-10">
@@ -19,105 +20,188 @@
             <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center font-bold text-xs">FT</div>
             <h1 class="text-red-600 font-bold text-xl tracking-wider">FREETIMEGAMING</h1>
         </div>
-        <div class="text-green-500 text-sm">🛡️ 100% Safe</div>
+        <div class="text-green-500 text-sm flex items-center gap-1">
+            <span class="text-lg">🛡️</span> 100% Safe & Secure
+        </div>
     </header>
 
     <main class="max-w-md mx-auto mt-6 px-4">
         
         <div id="inputSection">
             <div class="text-center mb-6">
+                <span class="bg-red-900/30 text-red-500 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest border border-red-900">⚡ Free Sensitivity Generator</span>
                 <h2 class="text-2xl font-bold mt-4 leading-tight">Perfect Sensitivity<br>according to your device</h2>
+                <p class="text-gray-400 text-sm mt-2">Apne device ke hisab se perfect sensitivity, DPI aur Fire Button size generate karo</p>
             </div>
 
             <div class="card-bg p-6 rounded-2xl red-glow border border-gray-800">
-                <div class="mb-4">
-                    <label class="block text-xs text-gray-500 font-bold mb-1">Device Name</label>
-                    <input type="text" id="deviceName" placeholder="Search Device (e.g. Vivo V23)" class="w-full bg-black border border-gray-700 rounded-xl p-4 text-white focus:outline-none focus:border-red-600">
+                <h3 class="text-lg font-semibold mb-5 flex items-center gap-2">📱 Device Details</h3>
+                
+                <div class="mb-4 text-left">
+                    <label class="block text-xs text-gray-500 font-bold uppercase mb-1 ml-1">Device Name</label>
+                    <input type="text" id="deviceName" placeholder="Search Device (e.g. Vivo V23)" class="w-full bg-black border border-gray-700 rounded-xl p-4 text-white focus:outline-none focus:border-red-600 transition-all">
                 </div>
 
-                <div class="mb-6">
-                    <label class="block text-xs text-gray-500 font-bold mb-1">RAM</label>
-                    <select id="deviceRam" class="w-full bg-black border border-gray-700 rounded-xl p-4 text-white focus:outline-none focus:border-red-600">
-                        <option value="4GB">4GB RAM</option>
-                        <option value="6GB">6GB RAM</option>
-                        <option value="8GB">8GB RAM</option>
-                        <option value="12GB">12GB RAM</option>
+                <div class="mb-8 text-left">
+                    <label class="block text-xs text-gray-500 font-bold uppercase mb-1 ml-1">RAM</label>
+                    <select id="deviceRam" class="w-full bg-black border border-gray-700 rounded-xl p-4 text-white focus:outline-none focus:border-red-600 appearance-none transition-all">
+                        <option value="" disabled selected>Select RAM</option>
+                        <option value="2GB RAM">2GB RAM</option>
+                        <option value="3GB RAM">3GB RAM</option>
+                        <option value="4GB RAM">4GB RAM</option>
+                        <option value="6GB RAM">6GB RAM</option>
+                        <option value="8GB RAM">8GB RAM</option>
+                        <option value="12GB RAM">12GB RAM</option>
                     </select>
                 </div>
 
-                <button onclick="generateSensi()" class="w-full bg-red-600 hover:bg-red-700 text-white font-black py-4 rounded-xl transition-all">
+                <button onclick="generateSensi()" class="w-full bg-red-600 hover:bg-red-700 text-white font-black py-4 rounded-xl flex justify-center items-center gap-2 shadow-lg shadow-red-900/20 active:scale-95 transition-all">
                     ⚡ GENERATE SENSITIVITY
                 </button>
             </div>
         </div>
 
-        <div id="resultSection" class="hidden">
+        <div id="resultSection" class="hidden animate-in fade-in duration-500">
             <div class="card-bg p-5 rounded-3xl red-glow border border-red-900/30">
-                <div class="bg-red-600 text-white text-center py-2 rounded-xl font-bold mb-6 text-sm">⚡ YOUR SETTINGS</div>
+                <div class="bg-red-600 text-white text-center py-2 rounded-xl font-black mb-6 tracking-widest text-sm">✨ YOUR SENSITIVITY</div>
                 
+                <div class="text-center mb-8">
+                    <h4 class="text-xl font-bold" id="resName">Device Name</h4>
+                    <p class="text-red-500 font-black text-sm" id="resRam">RAM INFO</p>
+                </div>
+
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-black border border-gray-800 p-4 rounded-2xl text-center">
-                        <p class="text-gray-500 text-[10px] font-bold mb-1">GENERAL</p>
-                        <h2 class="text-red-600 text-4xl font-black text-glow" id="vGen">0</h2>
+                    <div class="bg-black/50 border border-gray-800 p-4 rounded-2xl text-center">
+                        <p class="text-gray-500 text-[10px] font-bold tracking-widest mb-1">GENERAL</p>
+                        <h2 class="text-red-600 text-4xl font-black text-glow" id="vGen">185</h2>
                     </div>
-                    <div class="bg-black border border-gray-800 p-4 rounded-2xl text-center">
-                        <p class="text-gray-500 text-[10px] font-bold mb-1">RED DOT</p>
-                        <h2 class="text-red-600 text-4xl font-black text-glow" id="vRed">0</h2>
+                    <div class="bg-black/50 border border-gray-800 p-4 rounded-2xl text-center">
+                        <p class="text-gray-500 text-[10px] font-bold tracking-widest mb-1">RED DOT</p>
+                        <h2 class="text-red-600 text-4xl font-black text-glow" id="vRed">173</h2>
                     </div>
-                    <div class="bg-black border border-gray-800 p-4 rounded-2xl text-center">
-                        <p class="text-gray-500 text-[10px] font-bold mb-1">DPI</p>
-                        <h2 class="text-red-600 text-4xl font-black text-glow" id="vDpi">0</h2>
+                    <div class="bg-black/50 border border-gray-800 p-4 rounded-2xl text-center">
+                        <p class="text-gray-500 text-[10px] font-bold tracking-widest mb-1">2X SCOPE</p>
+                        <h2 class="text-orange-500 text-4xl font-black" id="v2x">152</h2>
                     </div>
-                    <div class="bg-black border border-gray-800 p-4 rounded-2xl text-center">
-                        <p class="text-gray-500 text-[10px] font-bold mb-1">FIRE BUTTON</p>
-                        <h2 class="text-red-600 text-4xl font-black text-glow" id="vFire">0</h2>
+                    <div class="bg-black/50 border border-gray-800 p-4 rounded-2xl text-center">
+                        <p class="text-gray-500 text-[10px] font-bold tracking-widest mb-1">4X SCOPE</p>
+                        <h2 class="text-orange-500 text-4xl font-black" id="v4x">143</h2>
+                    </div>
+                    <div class="bg-black/50 border border-gray-800 p-4 rounded-2xl text-center">
+                        <p class="text-gray-500 text-[10px] font-bold tracking-widest mb-1">DPI</p>
+                        <h2 class="text-red-600 text-4xl font-black text-glow" id="vDpi">454</h2>
+                    </div>
+                    <div class="bg-black/50 border border-gray-800 p-4 rounded-2xl text-center">
+                        <p class="text-gray-500 text-[10px] font-bold tracking-widest mb-1">FIRE BUTTON</p>
+                        <h2 class="text-red-500 text-4xl font-black text-glow" id="vFire">52</h2>
                     </div>
                 </div>
 
-                <button onclick="window.location.reload()" class="w-full mt-6 text-gray-500 text-xs font-bold underline">Generate for another device?</button>
+                <div class="mt-8 flex justify-center">
+                    <div class="bg-green-950/40 border border-green-900 text-green-400 px-6 py-2 rounded-full text-sm font-bold flex items-center gap-2">
+                        <span>✓</span> Settings saved successfully
+                    </div>
+                </div>
+
+                <button onclick="window.location.reload()" class="w-full mt-6 text-gray-500 text-xs font-bold hover:text-white transition-colors">Generate for another device?</button>
             </div>
         </div>
 
         <div class="mt-16 text-center">
-            <h2 class="text-2xl font-black text-red-600 mb-6">FREETIMEGAMING Packs</h2>
+            <h2 class="text-2xl font-black text-red-600 mb-2">FREETIMEGAMING Sensi Packs</h2>
+            <p class="text-gray-400 text-sm mb-10">Premium settings for Ultra-Smooth Headshots</p>
 
-            <div class="card-bg p-6 rounded-3xl border border-gray-800 mb-6 text-left">
-                <h3 class="text-xl font-bold">Android Advance Sensi</h3>
-                <p class="text-gray-500 text-sm mb-4">70% Headshot Rate Guaranteed</p>
-                <p class="text-white text-3xl font-black mb-4">₹299</p>
-                <button onclick="buyPack('Advance Sensi', 299)" class="w-full bg-red-600 py-4 rounded-2xl font-bold">BUY NOW</button>
+            <div class="card-bg p-6 rounded-3xl border border-gray-800 mb-8 text-left transition-transform hover:scale-[1.02]">
+                <div class="w-14 h-14 bg-red-600/20 border border-red-600 rounded-2xl flex items-center justify-center mb-5">
+                    <span class="text-2xl">📁</span>
+                </div>
+                <h3 class="text-xl font-black mb-1">Android Advance Sensi</h3>
+                <p class="text-gray-500 text-sm mb-6">Optimized settings for better aim & control</p>
+                
+                <div class="space-y-3 mb-8">
+                    <div class="flex items-center gap-3 text-sm font-medium"><span class="text-red-600">✔</span> 70% Headshot Rate</div>
+                    <div class="flex items-center gap-3 text-sm font-medium"><span class="text-red-600">✔</span> Custom DPI Config</div>
+                    <div class="flex items-center gap-3 text-sm font-medium"><span class="text-red-600">✔</span> Zero Recoil Settings</div>
+                </div>
+
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="text-gray-600 line-through font-bold">₹499</span>
+                    <span class="text-white text-3xl font-black">₹299</span>
+                </div>
+                <button onclick="buyPack('Advance Sensi', 299)" class="w-full bg-red-600 hover:bg-red-700 text-white font-black py-4 rounded-2xl transition-all shadow-lg shadow-red-900/30">BUY NOW</button>
             </div>
 
-            <div class="card-bg p-6 rounded-3xl border border-red-600/50 red-glow mb-6 text-left">
-                <h3 class="text-xl font-bold">Android Global Sensi</h3>
-                <p class="text-gray-500 text-sm mb-4">95% Headshot Rate (Pro Players)</p>
-                <p class="text-white text-3xl font-black mb-4">₹899</p>
-                <button onclick="buyPack('Global Sensi', 899)" class="w-full bg-red-600 py-4 rounded-2xl font-bold">BUY NOW</button>
+            <div class="card-bg p-6 rounded-3xl border border-red-600/50 red-glow mb-8 text-left relative transition-transform hover:scale-[1.02]">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-red-600 px-6 py-1 rounded-full text-[10px] font-black tracking-widest uppercase">Popular</div>
+                <div class="w-14 h-14 bg-red-600/20 border border-red-600 rounded-2xl flex items-center justify-center mb-5">
+                    <span class="text-2xl">📁</span>
+                </div>
+                <h3 class="text-xl font-black mb-1">Android Global Sensi</h3>
+                <p class="text-gray-500 text-sm mb-6">Ultimate system-level sensitivity tuning</p>
+                
+                <div class="space-y-3 mb-8">
+                    <div class="flex items-center gap-3 text-sm font-medium"><span class="text-red-600">✔</span> 90-95% Headshot Rate</div>
+                    <div class="flex items-center gap-3 text-sm font-medium"><span class="text-red-600">✔</span> High Accuracy Aim Tuning</div>
+                    <div class="flex items-center gap-3 text-sm font-medium"><span class="text-red-600">✔</span> Pro Player Configs</div>
+                </div>
+
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="text-gray-600 line-through font-bold">₹1499</span>
+                    <span class="text-white text-3xl font-black">₹899</span>
+                </div>
+                <button onclick="buyPack('Global Sensi', 899)" class="w-full bg-red-600 hover:bg-red-700 text-white font-black py-4 rounded-2xl transition-all shadow-lg shadow-red-900/30">BUY NOW</button>
             </div>
         </div>
 
     </main>
 
+    <footer class="mt-20 border-t border-gray-900 pt-10 text-center px-4">
+        <h2 class="text-red-600 font-bold text-lg mb-6">FREETIMEGAMING</h2>
+        <div class="flex justify-center gap-6 text-gray-400 text-sm mb-10">
+            <span>Home</span>
+            <span>Feedback</span>
+            <span>Order History</span>
+        </div>
+        <p class="text-[10px] text-gray-600 pb-10">© 2026 FREETIMEGAMING. All Rights Reserved.</p>
+    </footer>
+
     <script>
         function generateSensi() {
             const name = document.getElementById('deviceName').value;
-            if(!name) { alert("Please enter device name!"); return; }
-            
-            document.getElementById('inputSection').classList.add('hidden');
-            document.getElementById('resultSection').classList.remove('hidden');
+            const ram = document.getElementById('deviceRam').value;
 
-            document.getElementById('vGen').innerText = Math.floor(Math.random() * (200 - 180) + 180);
-            document.getElementById('vRed').innerText = Math.floor(Math.random() * (190 - 175) + 175);
-            document.getElementById('vDpi').innerText = Math.floor(Math.random() * (600 - 410) + 410);
-            document.getElementById('vFire').innerText = Math.floor(Math.random() * (56 - 44) + 44);
+            if (!name || !ram) {
+                alert("Please enter device name and select RAM!");
+                return;
+            }
+
+            // Fake Loading
+            const btn = document.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = "Generating... 🔄";
+            btn.disabled = true;
+
+            setTimeout(() => {
+                document.getElementById('inputSection').classList.add('hidden');
+                document.getElementById('resultSection').classList.remove('hidden');
+
+                document.getElementById('resName').innerText = name;
+                document.getElementById('resRam').innerText = ram;
+
+                // Randomizing values for realistic feel
+                document.getElementById('vGen').innerText = Math.floor(Math.random() * (200 - 180) + 180);
+                document.getElementById('vRed').innerText = Math.floor(Math.random() * (190 - 170) + 170);
+                document.getElementById('v2x').innerText = Math.floor(Math.random() * (160 - 145) + 145);
+                document.getElementById('v4x').innerText = Math.floor(Math.random() * (150 - 135) + 135);
+                document.getElementById('vDpi').innerText = Math.floor(Math.random() * (600 - 410) + 410);
+                document.getElementById('vFire').innerText = Math.floor(Math.random() * (58 - 48) + 48);
+            }, 1200);
         }
 
         function buyPack(name, price) {
-            let myNumber = "916375514787"; 
-            let message = `Hello FREETIMEGAMING! Mujhe apka ${name} pack kharidna hai. Price: ₹${price}.`;
-            let url = "https://wa.me/" + myNumber + "?text=" + encodeURIComponent(message);
-            window.open(url, '_blank');
+            alert(`FREETIMEGAMING PREMIUM PACK\n\nPack: ${name}\nAmount: ₹${price}\n\nRedirecting to secure payment...`);
+            
         }
-    </script>
+   </script>
 </body>
-</html>
+>
