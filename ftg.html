@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FREETIMEGAMING - Best Free Fire Sensi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0d0d0d; color: white; font-family: sans-serif; }
+        .red-glow { box-shadow: 0 0 15px rgba(220, 38, 38, 0.2); border: 1px solid rgba(220, 38, 38, 0.3); }
+        .card-bg { background-color: #1a1a1a; }
+        .text-glow { text-shadow: 0 0 10px rgba(220, 38, 38, 0.5); }
+    </style>
+</head>
+<body class="pb-10">
+
+    <header class="flex justify-between items-center p-4 border-b border-gray-800 bg-black sticky top-0 z-50">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center font-bold text-xs">FT</div>
+            <h1 class="text-red-600 font-bold text-xl tracking-wider">FREETIMEGAMING</h1>
+        </div>
+        <div class="text-green-500 text-sm">🛡️ 100% Safe</div>
+    </header>
+
+    <main class="max-w-md mx-auto mt-6 px-4">
+        <div id="inputSection">
+            <div class="text-center mb-6">
+                <h2 class="text-2xl font-bold mt-4">Perfect Sensitivity Generator</h2>
+            </div>
+            <div class="card-bg p-6 rounded-2xl red-glow">
+                <input type="text" id="deviceName" placeholder="Device Name (e.g. Vivo)" class="w-full bg-black border border-gray-700 rounded-xl p-4 mb-4 text-white">
+                <select id="deviceRam" class="w-full bg-black border border-gray-700 rounded-xl p-4 mb-6 text-white">
+                    <option value="4GB">4GB RAM</option>
+                    <option value="6GB">6GB RAM</option>
+                    <option value="8GB">8GB RAM</option>
+                </select>
+                <button onclick="generateSensi()" class="w-full bg-red-600 font-bold py-4 rounded-xl">GENERATE</button>
+            </div>
+        </div>
+
+        <div id="resultSection" class="hidden mt-8">
+            <div class="card-bg p-5 rounded-3xl red-glow border border-red-900/30">
+                <div class="grid grid-cols-2 gap-4" id="resGrid">
+                    <div class="bg-black p-4 rounded-2xl text-center"><p class="text-xs text-gray-500">GENERAL</p><h2 class="text-red-600 text-4xl font-bold" id="vGen">0</h2></div>
+                    <div class="bg-black p-4 rounded-2xl text-center"><p class="text-xs text-gray-500">RED DOT</p><h2 class="text-red-600 text-4xl font-bold" id="vRed">0</h2></div>
+                    <div class="bg-black p-4 rounded-2xl text-center"><p class="text-xs text-gray-500">DPI</p><h2 class="text-red-600 text-4xl font-bold" id="vDpi">0</h2></div>
+                    <div class="bg-black p-4 rounded-2xl text-center"><p class="text-xs text-gray-500">FIRE BUTTON</p><h2 class="text-red-600 text-4xl font-bold" id="vFire">0</h2></div>
+                </div>
+                <button onclick="window.location.reload()" class="w-full mt-4 text-gray-500 text-xs">Try Another Device</button>
+            </div>
+        </div>
+
+        <div class="mt-16 text-center">
+            <h2 class="text-2xl font-bold text-red-600 mb-6">Premium Packs</h2>
+            <div class="card-bg p-6 rounded-3xl border border-gray-800 mb-8 text-left">
+                <h3 class="text-xl font-bold">Android Advance Sensi</h3>
+                <p class="text-white text-3xl font-bold my-4">₹299</p>
+                <button onclick="buyPack('Advance Sensi', 299)" class="w-full bg-red-600 py-4 rounded-2xl font-bold">BUY NOW</button>
+            </div>
+            <div class="card-bg p-6 rounded-3xl border border-red-600/50 mb-8 text-left">
+                <h3 class="text-xl font-bold">Android Global Sensi</h3>
+                <p class="text-white text-3xl font-bold my-4">₹899</p>
+                <button onclick="buyPack('Global Sensi', 899)" class="w-full bg-red-600 py-4 rounded-2xl font-bold">BUY NOW</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function generateSensi() {
+            const name = document.getElementById('deviceName').value;
+            if(!name) { alert("Enter Device Name"); return; }
+            document.getElementById('inputSection').classList.add('hidden');
+            document.getElementById('resultSection').classList.remove('hidden');
+            document.getElementById('vGen').innerText = Math.floor(Math.random() * (100 - 90) + 90);
+            document.getElementById('vRed').innerText = Math.floor(Math.random() * (100 - 85) + 85);
+            document.getElementById('vDpi').innerText = Math.floor(Math.random() * (600 - 400) + 400);
+            document.getElementById('vFire').innerText = Math.floor(Math.random() * (60 - 40) + 40);
+        }
+
+        function buyPack(name, price) {
+            // YAHAN APNA NUMBER DAALEIN (91 ke saath)
+            let myNumber = "916375514787"; 
+            let message = `Hello FREETIMEGAMING! Mujhe apka ${name} pack kharidna hai. Price: ₹${price}.`;
+            let url = "https://wa.me/" + myNumber + "?text=" + encodeURIComponent(message);
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html
